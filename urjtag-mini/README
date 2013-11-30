@@ -1,4 +1,5 @@
-MobiAqua tools: This is minimalised version of UrJTAG.
+MobiAqua tools: This is minimalised version of UrJTAG and modified for
+specific purposes for this project.
 
 
 The subdirectory urjtag/ of the UrJTAG package contains a branch that is used
