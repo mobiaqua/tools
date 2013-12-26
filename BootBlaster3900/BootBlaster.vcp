@@ -104,8 +104,10 @@ SOURCE=.\BootBlaster.cpp
 DEP_CPP_BOOTB=\
 	".\BootBlaster.h"\
 	".\StdAfx.h"\
-	{$(INCLUDE)}"aygshell.h"\
-	{$(INCLUDE)}"sipapi.h"\
+	
+NODEP_CPP_BOOTB=\
+	".\ipapi.h"\
+	".\ygshell.h"\
 	
 # End Source File
 # Begin Source File
@@ -125,8 +127,10 @@ DEP_CPP_FLASH=\
 	".\StdAfx.h"\
 	".\zconf.h"\
 	".\zlib.h"\
-	{$(INCLUDE)}"aygshell.h"\
-	{$(INCLUDE)}"sipapi.h"\
+	
+NODEP_CPP_FLASH=\
+	".\ipapi.h"\
+	".\ygshell.h"\
 	
 # End Source File
 # Begin Source File
@@ -214,4 +218,5 @@ SOURCE=.\BootBlaster.ico
 SOURCE=.\chip.ico
 # End Source File
 # End Group
-# Begin Source File
+# End Target
+# End Project
