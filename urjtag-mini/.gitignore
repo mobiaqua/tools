@@ -1,6 +1,7 @@
 #
 # general globs
 #
+.dirstamp
 *~
 *.o
 *.lo
@@ -65,7 +66,7 @@ Makefile.in
 # urjtag generated files
 #
 /include/urjtag/urjtag.h
-/src/urjtag.pc
-/src/apps/jtag/jtag
+/src/urjtagmini.pc
+/src/apps/jtag/jtagmini
 /src/cmd/generated_cmd_list.h
 /src/cmd/generated_cmd_list.h.stamp
