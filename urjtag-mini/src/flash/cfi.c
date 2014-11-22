@@ -234,12 +234,15 @@ urj_flash_cfi_detect (urj_bus_t *bus, uint32_t adr,
             (tmp ? (1 << tmp) : 0) *
             cfi->system_interface_info.typ_chip_erase_timeout;
 
-        /* Device geometry - see Table 8 in [1] */
-        /* TODO: Add out of range check */
-        cfi->device_geometry.device_size = 1 << read1 (DEVICE_SIZE_OFFSET);
-
         cfi->device_geometry.device_interface =
             read2 (FLASH_DEVICE_INTERFACE_OFFSET);
+
+        /* Device geometry - see Table 8 in [1] */
+        /* TODO: Add out of range check */
+        if (cfi->device_geometry.device_interface == CFI_INTERFACE_X8_X16 && ma == 1)
+            cfi->device_geometry.device_size = (1 << read1 (DEVICE_SIZE_OFFSET)) * 2;
+        else
+            cfi->device_geometry.device_size = 1 << read1 (DEVICE_SIZE_OFFSET);
 
         /* TODO: Add out of range check */
         cfi->device_geometry.max_bytes_write =
