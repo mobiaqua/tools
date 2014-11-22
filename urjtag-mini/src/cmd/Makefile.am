@@ -25,7 +25,7 @@ include $(top_srcdir)/Makefile.rules
 
 noinst_LTLIBRARIES = libcmd.la
 
-all_cmd_files = \
+always_enabled_cmd_files = \
 	cmd_frequency.c \
 	cmd_cable.c \
 	cmd_reset.c \
@@ -67,9 +67,15 @@ all_cmd_files = \
 libcmd_la_SOURCES = \
 	cmd.h \
 	cmd_list.h \
-	$(all_cmd_files)
+	generated_cmd_list.h \
+	$(always_enabled_cmd_files)
 
-$(libcmd_la_OBJECTS): generated_cmd_list.h
+# This list has to be unconditional so the generated header always contains
+# all possible commands.  We control which ones actually get enabled via
+# defines from config.h.
+all_cmd_files = \
+	$(always_enabled_cmd_files)
+
 generated_cmd_list.h: generated_cmd_list.h.stamp ; @true
 generated_cmd_list.h.stamp: $(all_cmd_files)
 	$(AM_V_GEN)set -e; \
@@ -87,6 +93,7 @@ generated_cmd_list.h.stamp: $(all_cmd_files)
 	touch $@
 
 
+BUILT_SOURCES = generated_cmd_list.h
 EXTRA_DIST = generated_cmd_list.h generated_cmd_list.h.stamp
 MAINTAINERCLEANFILES = generated_cmd_list.h generated_cmd_list.h.stamp
 
