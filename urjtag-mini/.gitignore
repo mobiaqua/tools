@@ -1,7 +1,6 @@
 #
 # general globs
 #
-.dirstamp
 *~
 *.o
 *.lo
@@ -24,6 +23,7 @@ core
 #
 # general autotool files
 #
+.dirstamp
 .deps
 .libs
 Makefile
